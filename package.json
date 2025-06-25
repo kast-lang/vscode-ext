@@ -1,0 +1,28 @@
+{
+  "name": "kast",
+  "displayName": "Kast",
+  "description": "Kast programming language support",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": "https://github.com/kast-lang/vscode-ext",
+  "contributes": {
+    "languages": [
+      {
+        "id": "kast",
+        "aliases": [
+          "Kast",
+          "kast"
+        ],
+        "extensions": [
+          ".ks"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ]
+  }
+}
