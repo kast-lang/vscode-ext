@@ -50,5 +50,5 @@ function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {
 
 // This method is called when your extension is deactivated
 export function deactivate() {
-	console.log("Kast has been deactivated")
+	console.log("Kast has been deactivated");
 }
