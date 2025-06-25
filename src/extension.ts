@@ -42,7 +42,7 @@ function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {
 		],
 	};
 
-	const client = new lsp.LanguageClient('kast lsp', serverOptions, clientOptions);
+	const client = new lsp.LanguageClient('Kast Language Server', serverOptions, clientOptions);
 	client.start();
 
 	return client;
