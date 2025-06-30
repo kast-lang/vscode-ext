@@ -1,32 +1,88 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Kast",
+	"scopeName": "source.kast",
+	"fileTypes": [
+		"ks"
+	],
 	"patterns": [
 		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#chars"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#block_comments"
 		}
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.kast",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.kast",
-			"begin": "\"",
-			"end": "\"",
 			"patterns": [
 				{
-					"name": "constant.character.escape.kast",
-					"match": "\\\\."
+					"name": "keyword",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"chars": {
+			"patterns": [
+				{
+					"name": "constant.character",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line",
+					"begin": "#",
+					"end": "$"
+				}
+			]
+		},
+		"block_comments": {
+			"patterns": [
+				{
+					"name": "comment.block",
+					"begin": "\\(\\#",
+					"end": "\\#\\)",
+					"patterns": [
+						{
+							"include": "#block_comments"
+						}
+					]
 				}
 			]
 		}
-	},
-	"scopeName": "source.kast"
+	}
 }
