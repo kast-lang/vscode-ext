@@ -12,6 +12,17 @@
   ],
   "repository": "https://github.com/kast-lang/vscode-ext",
   "contributes": {
+    "configuration": {
+      "title": "Kast",
+      "type": "object",
+      "properties": {
+        "kast.binary": {
+          "type": "string",
+          "default": "kast",
+          "description": "Kast binary"
+        }
+      }
+    },
     "breakpoints": [
       {
         "language": "kast"

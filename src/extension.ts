@@ -33,8 +33,12 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {
+  const command: string = vscode.workspace
+    .getConfiguration("kast")
+    .get("binary")!;
+  console.log("KAST BINARY =", command);
   const serverOptions: lsp.ServerOptions = {
-    command: "kast",
+    command,
     args: ["lsp"],
   };
 
