@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log("Kast has been activated");
 
-  const lsp = start_lsp(context);
+  let lsp = start_lsp(context);
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
@@ -21,7 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
       // Display a message box to the user
       vscode.window.showInformationMessage("Restarting Kast lsp");
       if (lsp.isRunning()) {
-        lsp.restart();
+        lsp.stop();
+        lsp = start_lsp(context);
       } else {
         lsp.start();
       }
