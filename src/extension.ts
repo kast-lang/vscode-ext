@@ -15,21 +15,24 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
-  const disposable = vscode.commands.registerCommand("kast.restart_lsp", () => {
-    // The code you place here will be executed every time your command is executed
-    // Display a message box to the user
-    vscode.window.showInformationMessage("Restarting Kast lsp");
-    async function restart() {
-      try {
-        await lsp.restart();
-      } catch {
-        await lsp.start();
+  context.subscriptions.push(
+    vscode.commands.registerCommand("kast.restart_lsp", () => {
+      // The code you place here will be executed every time your command is executed
+      // Display a message box to the user
+      vscode.window.showInformationMessage("Restarting Kast lsp");
+      if (lsp.isRunning()) {
+        lsp.restart();
+      } else {
+        lsp.start();
       }
-    }
-    restart();
-  });
-
-  context.subscriptions.push(disposable);
+    }),
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("kast.stop_lsp", () => {
+      vscode.window.showInformationMessage("Stopping Kast lsp");
+      lsp.stop();
+    }),
+  );
 }
 
 function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {

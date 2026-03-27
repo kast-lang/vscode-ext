@@ -52,6 +52,10 @@
       {
         "command": "kast.restart_lsp",
         "title": "Kast: restart language server"
+      },
+      {
+        "command": "kast.stop_lsp",
+        "title": "Kast: stop language server"
       }
     ]
   },
