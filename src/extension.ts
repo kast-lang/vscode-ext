@@ -46,6 +46,18 @@ function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {
   };
 
   const clientOptions: lsp.LanguageClientOptions = {
+    errorHandler: {
+      error(error, message, count) {
+        return {
+          action: lsp.ErrorAction.Shutdown,
+        };
+      },
+      closed() {
+        return {
+          action: lsp.CloseAction.DoNotRestart,
+        };
+      },
+    },
     documentSelector: [
       // Active functionality on files of these languages.
       {
