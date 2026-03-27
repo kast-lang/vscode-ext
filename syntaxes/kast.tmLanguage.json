@@ -7,22 +7,29 @@
 	],
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#chars"
-		},
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#block_comments"
+			"include": "#expression"
 		}
 	],
 	"repository": {
+		"expression": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#chars"
+				},
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#block_comments"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [
 				{
@@ -39,6 +46,16 @@
 					"end": "\"",
 					"patterns": [
 						{
+							"name": "meta.interpolation.kast",
+							"begin": "\\\\\\(",
+							"end": "\\)",
+							"patterns": [
+								{
+									"include": "#expression"
+								}
+							]
+						},
+						{
 							"name": "constant.character.escape",
 							"match": "\\\\."
 						}
@@ -49,10 +66,20 @@
 		"chars": {
 			"patterns": [
 				{
-					"name": "constant.character",
+					"name": "string.quoted.single",
 					"begin": "'",
 					"end": "'",
 					"patterns": [
+						{
+							"name": "meta.interpolation.kast",
+							"begin": "\\\\\\(",
+							"end": "\\)",
+							"patterns": [
+								{
+									"include": "#expression"
+								}
+							]
+						},
 						{
 							"name": "constant.character.escape",
 							"match": "\\\\."
