@@ -14,9 +14,6 @@
 		"expression": {
 			"patterns": [
 				{
-					"include": "#keywords"
-				},
-				{
 					"include": "#strings"
 				},
 				{
@@ -27,14 +24,45 @@
 				},
 				{
 					"include": "#block_comments"
+				},
+				{
+					"include": "#curly_brackets"
+				},
+				{
+					"include": "#round_brackets"
+				},
+				{
+					"include": "#square_brackets"
 				}
 			]
 		},
-		"keywords": {
+		"curly_brackets": {
+			"begin": "\\{",
+			"end": "\\}",
+			"name": "meta.group.brackets.kast.curly",
 			"patterns": [
 				{
-					"name": "keyword",
-					"match": "\\b(if|while|for|return)\\b"
+					"include": "#expression"
+				}
+			]
+		},
+		"round_brackets": {
+			"begin": "\\(",
+			"end": "\\)",
+			"name": "meta.group.brackets.kast.round",
+			"patterns": [
+				{
+					"include": "#expression"
+				}
+			]
+		},
+		"square_brackets": {
+			"begin": "\\[",
+			"end": "\\]",
+			"name": "meta.group.brackets.kast.square",
+			"patterns": [
+				{
+					"include": "#expression"
 				}
 			]
 		},
@@ -46,7 +74,8 @@
 					"end": "\"|$",
 					"patterns": [
 						{
-							"name": "meta.interpolation.kast",
+							"name": "constant.character.escape",
+							"contentName": "meta.embedded.kast",
 							"begin": "\\\\\\(",
 							"end": "\\)",
 							"patterns": [
