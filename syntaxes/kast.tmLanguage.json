@@ -43,7 +43,7 @@
 				{
 					"name": "string.quoted.double",
 					"begin": "\"",
-					"end": "\"",
+					"end": "\"|$",
 					"patterns": [
 						{
 							"name": "meta.interpolation.kast",
@@ -68,7 +68,7 @@
 				{
 					"name": "string.quoted.single",
 					"begin": "'",
-					"end": "'",
+					"end": "'|$",
 					"patterns": [
 						{
 							"name": "meta.interpolation.kast",
