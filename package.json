@@ -38,7 +38,11 @@
         "extensions": [
           ".ks"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/blackwhite.svg",
+          "dark": "./icons/regular.svg"
+        }
       }
     ],
     "grammars": [
