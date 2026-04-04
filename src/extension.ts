@@ -64,6 +64,9 @@ function start_lsp(context: vscode.ExtensionContext): lsp.LanguageClient {
       {
         language: "kast",
       },
+      {
+        language: "minikast",
+      },
     ],
   };
 
