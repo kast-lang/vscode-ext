@@ -89,6 +89,28 @@
 							"match": "\\\\."
 						}
 					]
+				},
+				{
+					"name": "string.quoted.multiline",
+					"begin": "''",
+					"end": "''",
+					"patterns": [
+						{
+							"name": "constant.character.escape",
+							"contentName": "meta.embedded.kast",
+							"begin": "\\\\\\(",
+							"end": "\\)",
+							"patterns": [
+								{
+									"include": "#expression"
+								}
+							]
+						},
+						{
+							"name": "constant.character.escape",
+							"match": "\\\\."
+						}
+					]
 				}
 			]
 		},
